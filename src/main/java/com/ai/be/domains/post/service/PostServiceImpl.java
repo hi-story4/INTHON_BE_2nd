@@ -26,6 +26,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+import static org.codehaus.groovy.runtime.DefaultGroovyMethods.collect;
+
 
 @Service
 @RequiredArgsConstructor
@@ -115,18 +117,33 @@ public class PostServiceImpl implements PostService {
     }
 
     @Transactional(readOnly = true)
-    public PostDetailResp getPostForComment() {
-        Post post = postRepository.findFirstByCommentIdsEmptyOrderByCreatedDateAsc()
+    public String getPostForComment() {
+        String format ="672feadbd2c04255c289416c";
+//        Post post = postRepository.findFirstByCommentIdsEmptyOrderByCreatedDateAsc()
+//                .orElseThrow(() -> new CustomException(CustomResponseStatus.POST_NOT_FOUND));
+        //
+        //
+        //
+        //
+        //
+        //
+
+        Post post = postRepository.findById(format)
                 .orElseThrow(() -> new CustomException(CustomResponseStatus.POST_NOT_FOUND));
-
-        List<Comment> comments = commentRepository.findByPostId(post.getId());
-
-        return PostDetailResp.builder()
-                .id(post.getId())
-                .content(post.getContent())
-                .chat(chatMapper.toDetailDto(post.getChat()))
-                .comments(commentMapper.toDtoList(comments))
-                .createdDate(post.getCreatedDate())
-                .build();
+        return post.getId();
     }
+
+//        List<Comment> comments = commentRepository.findByPostId(post.getId());
+//
+//        return PostDetailResp.builder()
+//                .id(post.getId())
+//                .content(post.getContent())
+//                .chat(chatMapper.toDetailDto(post.getChat()))
+//                .comments(comments.stream().map(comment -> CommentResp.builder()
+//                        .id(comment.getId())
+//                        .commentContent(comment.getCommentContent())
+//                        .build()).collect(Collectors.toList()))
+//                .createdDate(post.getCreatedDate())
+//                .build();
+//    }
 }

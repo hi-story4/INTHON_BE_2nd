@@ -49,17 +49,10 @@ public class PostController {
 
     //Get
     @PostMapping("/similar")
-    public ResponseEntity<ApiResponse<PostDetailResp>> getOtherPostForComment(){
+    public ResponseEntity<ApiResponse<String>> getOtherPostForComment(){
 
-        PostDetailResp response = postService.getPostForComment();
+        String response = postService.getPostForComment();
         return ApiResponse.createSuccessWithOk(response);
-    }
-
-
-    @GetMapping("/test")
-    public ResponseEntity<ApiResponse<String>> gettelslslksdlkdlksd(
-            ){
-        return ApiResponse.createSuccessWithOk("succeed");
     }
 
 

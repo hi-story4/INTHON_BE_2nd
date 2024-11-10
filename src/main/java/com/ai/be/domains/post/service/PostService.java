@@ -13,5 +13,5 @@ public interface PostService {
 
     PostDetailResp getPostDetail(String postId);
 
-    PostDetailResp getPostForComment();
+    String getPostForComment();
 }
