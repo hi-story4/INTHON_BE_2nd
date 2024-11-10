@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.ai.inthon.domains")
+@EnableMongoRepositories(basePackages = "com.ai.be.domains")
 @EnableMongoAuditing //BaseDocument
 public class MongoConfig {
 

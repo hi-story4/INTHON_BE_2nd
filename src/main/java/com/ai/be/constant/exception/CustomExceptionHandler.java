@@ -65,13 +65,6 @@ public class CustomExceptionHandler {
                 .body(ApiResponse.createError(e.getCustomResponseStatus()));
     }
 
-    @ExceptionHandler(MissingServletRequestPartException.class)
-    public ResponseEntity<ApiResponse<String>> handleMissingPart(MissingServletRequestPartException exception){
-        return ResponseEntity.status(HttpStatus. BAD_REQUEST)
-                .body(ApiResponse.createError(CustomResponseStatus.NO_MULITIPART_ERROR));
-
-    }
-
 
 
     private String getStackTraceAsString(Throwable e) {
